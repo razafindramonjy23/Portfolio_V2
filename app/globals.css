@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #142947;
+  --navy-deep: #0d1f35;
+  --navy-light: #1e3a5f;
+  --gold: #AD912D;
+  --gold-light: #c9ab3c;
+  --gold-muted: #877634;
+  --slate-rock: #374041;
+  --slate-mineral: #5E5B3A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1f35;
+}
+::-webkit-scrollbar-thumb {
+  background: #AD912D;
+  border-radius: 2px;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #AD912D 0%, #c9ab3c 50%, #877634 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Noise texture overlay */
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glowing border */
+.glow-border {
+  box-shadow: 0 0 20px rgba(173, 145, 45, 0.15), inset 0 0 20px rgba(173, 145, 45, 0.05);
+}
+
+/* Grid pattern background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(173,145,45,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(173,145,45,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(173,145,45,0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Line draw animation */
+@keyframes lineDraw {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Blink cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skill bar animation */
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: var(--target-width); }
+}
+
+/* Diagonal lines */
+.diagonal-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(173,145,45,0.03) 10px,
+    rgba(173,145,45,0.03) 11px
+  );
+}
