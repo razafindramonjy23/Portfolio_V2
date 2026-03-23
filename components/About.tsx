@@ -130,7 +130,7 @@ export default function About() {
                   { key: 'localisation', val: '"Antananarivo, MG"', color: 'text-yellow-400/80' },
                   { key: 'disponible', val: 'true', color: 'text-green-400/80' },
                   { key: 'email', val: '"razafindramonjytahina@gmail.com"', color: 'text-purple-400/80' },
-                  { key: 'portfolio', val: '"razafindramonjy.vercel.app"', color: 'text-blue-400/80' },
+                  { key: 'portfolio', val: '"razafindramonjy.zaika.mg"', color: 'text-blue-400/80' },
                 ].map((item, i) => (
                   <motion.div
                     key={item.key}

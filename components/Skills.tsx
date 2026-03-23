@@ -8,38 +8,91 @@ const skillCategories = [
     title: 'Frontend',
     icon: '⬡',
     skills: [
-      { name: 'React / Next.js', level: 85 },
-      { name: 'JavaScript / TypeScript', level: 80 },
-      { name: 'HTML / CSS / Tailwind', level: 90 },
-      { name: 'Blender 3D', level: 55 },
+      { name: 'React', level: 85 },
+      { name: 'Next.js', level: 85 },
+      { name: 'TypeScript', level: 80 },
+      { name: 'JavaScript', level: 80 },
+      { name: 'HTML / CSS', level: 90 },
+      { name: 'Tailwind CSS', level: 90 },
     ],
   },
   {
     title: 'Backend',
     icon: '◈',
     skills: [
-      { name: 'Python / Django', level: 80 },
-      { name: 'Java', level: 65 },
-      { name: 'Node.js', level: 60 },
-      { name: 'SAP ABAP', level: 70 },
+      { name: 'Python', level: 85 },
+      { name: 'Django', level: 85 },
+      { name: 'Node.js', level: 70 },
+      { name: 'Java', level: 75 },
+      { name: 'PHP', level: 65 },
+      { name: 'Laravel', level: 65 },
     ],
   },
   {
-    title: 'Data & DevOps',
+    title: 'Databases & Tools',
     icon: '◉',
     skills: [
       { name: 'PostgreSQL', level: 75 },
       { name: 'MongoDB', level: 70 },
-      { name: 'Data Warehouse', level: 65 },
-      { name: 'Git / GitHub', level: 80 },
+      { name: 'MySQL', level: 65 },
+      { name: 'Git / GitHub', level: 90 },
+      { name: 'REST API', level: 85 },
     ],
   },
+  {
+    title: 'Deployment & Cloud',
+    icon: '☁️',
+    skills: [
+      { name: 'cPanel', level: 80 },
+      { name: 'AWS EC2', level: 70 },
+      { name: 'AWS S3', level: 65 },
+      { name: 'Deployment', level: 80 },
+    ],
+  },
+  {
+    title: 'SAP S/4HANA',
+    icon: '⬢',
+    skills: [
+      { name: 'ABAP', level: 75 },
+      { name: 'SAP Fiori', level: 70 },
+      { name: 'OData', level: 65 },
+      { name: 'CDS View', level: 80 },
+      { name: 'Integration Suite', level: 70 },
+      { name: 'BTP Cockpit', level: 55 },
+    ],
+  },
+  {
+    title: 'UI/UX Design',
+    icon: '✦',
+    skills: [
+      { name: 'Figma', level: 80 },
+      { name: 'Adobe XD', level: 65 },
+    ],
+  },
+  // {
+  //   title: 'Creative / 3D',
+  //   icon: '◆',
+  //   skills: [
+  //     { name: 'Blender', level: 55 },
+  //     { name: 'SketchUp', level: 55 },
+  //   ],
+  // },
 ]
 
 const techStack = [
-  'React', 'Next.js', 'TypeScript', 'Python', 'Django',
-  'Java', 'SAP ABAP', 'PostgreSQL', 'MongoDB', 'Blender 3D',
-  'Tailwind CSS', 'JavaScript', 'Git', 'REST API', 'Data Warehouse',
+  'React',
+  'Next.js',
+  'TypeScript',
+  'Django',
+  'Laravel',
+  'Node.js',
+  'PostgreSQL',
+  'MongoDB',
+  'Tailwind CSS',
+  'Git',
+  'REST API',
+  'AWS',
+  'cPanel',
 ]
 
 export default function Skills() {
@@ -75,8 +128,7 @@ export default function Skills() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="font-display font-black text-4xl lg:text-6xl text-white leading-tight mb-16"
         >
-          Stack &{' '}
-          <span className="text-gold-gradient">expertise</span>
+          Stack & <span className="text-gold-gradient">expertise</span>
         </motion.h2>
 
         {/* Skill categories */}
@@ -91,15 +143,21 @@ export default function Skills() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-gold text-2xl">{cat.icon}</span>
-                <h3 className="font-display font-bold text-white text-lg">{cat.title}</h3>
+                <h3 className="font-display font-bold text-white text-lg">
+                  {cat.title}
+                </h3>
               </div>
 
               <div className="space-y-4">
                 {cat.skills.map((skill, skillIdx) => (
                   <div key={skill.name}>
                     <div className="flex justify-between mb-1.5">
-                      <span className="font-mono text-white/60 text-xs">{skill.name}</span>
-                      <span className="font-mono text-gold/60 text-xs">{skill.level}%</span>
+                      <span className="font-mono text-white/60 text-xs">
+                        {skill.name}
+                      </span>
+                      <span className="font-mono text-gold/60 text-xs">
+                        {skill.level}%
+                      </span>
                     </div>
                     <div className="h-1 bg-white/5 relative overflow-hidden">
                       <motion.div
@@ -129,7 +187,7 @@ export default function Skills() {
         >
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
           <p className="font-mono text-white/30 text-xs tracking-widest mb-6 text-center">
-            TECHNOLOGIES MAÎTRISÉES
+            CORE STACK
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {techStack.map((tech, i) => (
