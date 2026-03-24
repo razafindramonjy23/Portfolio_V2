@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans, JetBrains_Mono } from 'next/font/google'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -32,8 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${playfair.variable} ${dmSans.variable} ${jetbrains.variable}`}>
-      <body className="bg-navy-deep text-white font-body antialiased overflow-x-hidden">
-        {children}
+      <body className="antialiased overflow-x-hidden" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -2,120 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── DARK THEME (default) ─── */
 :root {
-  --navy: #142947;
-  --navy-deep: #0d1f35;
-  --navy-light: #1e3a5f;
-  --gold: #AD912D;
-  --gold-light: #c9ab3c;
-  --gold-muted: #877634;
-  --slate-rock: #374041;
-  --slate-mineral: #5E5B3A;
+  --bg-primary:    #0d1f35;
+  --bg-secondary:  #142947;
+  --bg-card:       rgba(20, 41, 71, 0.4);
+  --bg-overlay:    rgba(13, 31, 53, 0.9);
+
+  --text-primary:  #ffffff;
+  --text-secondary:rgba(255,255,255,0.55);
+  --text-muted:    rgba(255,255,255,0.25);
+  --text-faint:    rgba(255,255,255,0.08);
+
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-medium: rgba(255,255,255,0.15);
+
+  --gold:          #AD912D;
+  --gold-light:    #c9ab3c;
+  --gold-muted:    #877634;
+  --gold-faint:    rgba(173,145,45,0.08);
+  --gold-border:   rgba(173,145,45,0.30);
+
+  --grid-line:     rgba(173,145,45,0.04);
+  --diagonal-line: rgba(173,145,45,0.03);
+  --scan-line:     rgba(173,145,45,0.20);
+
+  --scrollbar-track: #0d1f35;
+
+  --shadow-glow: 0 0 20px rgba(173,145,45,0.15), inset 0 0 20px rgba(173,145,45,0.05);
 }
 
-* {
-  box-sizing: border-box;
+/* ─── LIGHT THEME ─── */
+html.light {
+  --bg-primary:    #faf8f2;
+  --bg-secondary:  #f2ede0;
+  --bg-card:       rgba(255,255,255,0.70);
+  --bg-overlay:    rgba(250,248,242,0.92);
+
+  --text-primary:  #1a1208;
+  --text-secondary:rgba(26,18,8,0.60);
+  --text-muted:    rgba(26,18,8,0.35);
+  --text-faint:    rgba(26,18,8,0.06);
+
+  --border-subtle: rgba(173,145,45,0.12);
+  --border-medium: rgba(173,145,45,0.25);
+
+  --gold:          #8c7220;
+  --gold-light:    #AD912D;
+  --gold-muted:    #6b5818;
+  --gold-faint:    rgba(173,145,45,0.07);
+  --gold-border:   rgba(173,145,45,0.30);
+
+  --grid-line:     rgba(173,145,45,0.07);
+  --diagonal-line: rgba(173,145,45,0.05);
+  --scan-line:     rgba(173,145,45,0.15);
+
+  --scrollbar-track: #f2ede0;
+
+  --shadow-glow: 0 4px 30px rgba(173,145,45,0.15), 0 1px 8px rgba(173,145,45,0.10);
 }
 
-html {
-  scroll-behavior: smooth;
+/* ─── BASE ─── */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #0d1f35;
-}
-::-webkit-scrollbar-thumb {
-  background: #AD912D;
-  border-radius: 2px;
-}
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-/* Gold gradient text */
+/* ─── GOLD GRADIENT TEXT ─── */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #AD912D 0%, #c9ab3c 50%, #877634 100%);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold-muted) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Noise texture overlay */
-.noise-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
+/* ─── GLOW BORDER ─── */
+.glow-border { box-shadow: var(--shadow-glow); }
 
-/* Glowing border */
-.glow-border {
-  box-shadow: 0 0 20px rgba(173, 145, 45, 0.15), inset 0 0 20px rgba(173, 145, 45, 0.05);
-}
-
-/* Grid pattern background */
+/* ─── GRID PATTERN ─── */
 .grid-bg {
-  background-image: 
-    linear-gradient(rgba(173,145,45,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(173,145,45,0.04) 1px, transparent 1px);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Shimmer animation */
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(173,145,45,0.3) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite;
-}
-
-/* Line draw animation */
-@keyframes lineDraw {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-/* Blink cursor */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.cursor-blink {
-  animation: blink 1s step-end infinite;
-}
-
-/* Fade in up */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Skill bar animation */
-@keyframes fillBar {
-  from { width: 0; }
-  to { width: var(--target-width); }
-}
-
-/* Diagonal lines */
+/* ─── DIAGONAL LINES ─── */
 .diagonal-lines {
   background-image: repeating-linear-gradient(
     45deg,
     transparent,
     transparent 10px,
-    rgba(173,145,45,0.03) 10px,
-    rgba(173,145,45,0.03) 11px
+    var(--diagonal-line) 10px,
+    var(--diagonal-line) 11px
   );
+}
+
+/* ─── SHIMMER ─── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(173,145,45,0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* ─── BLINK CURSOR ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* ─── FADE IN UP ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── LIGHT MODE — extra surface polish ─── */
+html.light .card-surface {
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(12px);
+  border-color: rgba(173,145,45,0.18);
+  box-shadow: 0 2px 20px rgba(173,145,45,0.08);
+}
+
+/* smooth theme transition for all colored elements */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.35s;
+  transition-timing-function: ease;
+}
+/* but don't slow down transforms / opacity animations */
+.motion-safe\:transition-none,
+[data-framer-motion] {
+  transition: none !important;
+}
+
+/* ── Override: never slow down Framer Motion ── */
+[style*="transform"], [style*="opacity"] {
+  transition-property: background-color, border-color, color, box-shadow !important;
 }
