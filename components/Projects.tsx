@@ -5,19 +5,19 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 const projects = [
   {
-    id: 1, number: '01', title: 'ERP/CRM SAP Application', company: 'Augusta Reeves Suisse',
+    id: 1, number: '01', title: 'Consultant Technique SAP', company: 'Augusta Reeves Group',
     description: 'Développement d\'une application ERP/CRM complète en ABAP sur la plateforme SAP. Gestion des workflows métiers, interfaces utilisateur SAP, et intégration des processus d\'entreprise.',
-    tags: ['SAP', 'ABAP', 'ERP', 'CRM'], year: '2025',
+    tags: ['SAP', 'ABAP', 'FIORI', 'ODaat', 'CDS View', 'Integration Suite'], year: '2025 - Present',
   },
   {
-    id: 2, number: '02', title: 'Plateforme Web Kontiki', company: 'Kontiki Services',
+    id: 2, number: '02', title: 'Data Warehouse', company: 'Kontiki Services',
     description: 'Création du site web officiel complet + mise en place d\'un datawarehouse pour le département data analyst. Architecture full-stack avec Django en backend et React en frontend.',
-    tags: ['React', 'Django', 'PostgreSQL', 'Data Warehouse'], year: '2024-2025',
+    tags: ['React', 'Django', 'PostgreSQL', 'API Rest', 'ETL', 'OLAP'], year: '2024-2025',
   },
   {
     id: 3, number: '03', title: 'Système de Suivi de Projets', company: 'Ministère de l\'Intérieur',
     description: 'Outil de suivi et reporting des projets numériques du ministère. Dashboard de visualisation de l\'avancement, coordination inter-équipes et génération de rapports automatisés.',
-    tags: ['Python', 'React', 'PostgreSQL', 'Dashboard'], year: '2024',
+    tags: ['Agile', 'SCRUM', 'Laravel'], year: '2024',
   },
   {
     id: 4, number: '04', title: 'Site Vitrine SmartPredict', company: 'SmartPredict',

@@ -690,6 +690,12 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
+.mt-16 {
+  margin-top: 4rem;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .block {
   display: block;
 }
@@ -750,6 +756,12 @@ video {
 .h-px {
   height: 1px;
 }
+.h-11 {
+  height: 2.75rem;
+}
+.h-\[3px\] {
+  height: 3px;
+}
 .min-h-\[85vh\] {
   min-height: 85vh;
 }
@@ -804,6 +816,9 @@ video {
 .w-px {
   width: 1px;
 }
+.w-11 {
+  width: 2.75rem;
+}
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -812,6 +827,9 @@ video {
 }
 .max-w-lg {
   max-width: 32rem;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 .origin-left {
   transform-origin: left;
@@ -913,6 +931,19 @@ video {
 }
 .gap-8 {
   gap: 2rem;
+}
+.gap-2\.5 {
+  gap: 0.625rem;
+}
+.gap-5 {
+  gap: 1.25rem;
+}
+.gap-x-8 {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.gap-y-8 {
+  row-gap: 2rem;
 }
 .space-y-12 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -1147,6 +1178,9 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-\[8px\] {
+  font-size: 8px;
+}
 .font-black {
   font-weight: 900;
 }
@@ -1159,8 +1193,15 @@ video {
 .font-medium {
   font-weight: 500;
 }
+.font-semibold {
+  font-weight: 600;
+}
 .uppercase {
   text-transform: uppercase;
+}
+.tabular-nums {
+  --tw-numeric-spacing: tabular-nums;
+  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 .leading-\[0\.88\] {
   line-height: 0.88;
@@ -1186,6 +1227,12 @@ video {
 .tracking-widest {
   letter-spacing: 0.1em;
 }
+.tracking-\[0\.25em\] {
+  letter-spacing: 0.25em;
+}
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
 .text-gold {
   --tw-text-opacity: 1;
   color: rgb(173 145 45 / var(--tw-text-opacity, 1));
@@ -1209,6 +1256,10 @@ video {
 }
 .text-white\/\[0\.02\] {
   color: rgb(255 255 255 / 0.02);
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -1452,6 +1503,11 @@ html.light .card-surface {
   --tw-shadow-colored: 0 0 40px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.hover\:shadow-\[0_0_40px_rgba\(173\2c 145\2c 45\2c 0\.4\)\]:hover {
+  --tw-shadow: 0 0 40px rgba(173,145,45,0.4);
+  --tw-shadow-colored: 0 0 40px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1485,6 +1541,11 @@ html.light .card-surface {
 }
 .group:hover .group-hover\:shadow-\[0_6px_20px_rgba\(173\2c 145\2c 45\2c 0\.3\)\] {
   --tw-shadow: 0 6px 20px rgba(173,145,45,0.3);
+  --tw-shadow-colored: 0 6px 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.group:hover .group-hover\:shadow-\[0_6px_20px_rgba\(173\2c 145\2c 45\2c 0\.28\)\] {
+  --tw-shadow: 0 6px 20px rgba(173,145,45,0.28);
   --tw-shadow-colored: 0 6px 20px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }

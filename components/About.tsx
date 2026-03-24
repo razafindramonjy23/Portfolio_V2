@@ -92,7 +92,7 @@ export default function About() {
             </div>
             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -bottom-6 -right-6 p-4" style={{ backgroundColor: 'var(--gold)', color: 'var(--bg-primary)' }}>
-              <p className="font-display font-black text-2xl">4+</p>
+              <p className="font-display font-black text-2xl">2+</p>
               <p className="font-mono text-xs tracking-widest">ANS EXP.</p>
             </motion.div>
           </motion.div>

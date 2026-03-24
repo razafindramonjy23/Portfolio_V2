@@ -8,100 +8,86 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="contact" ref={ref} className="relative py-40 overflow-hidden">
+    <section id="contact" ref={ref} className="relative py-40 overflow-hidden grid-bg"
+      style={{ backgroundColor: 'var(--bg-primary)' }}>
+
       {/* Large background text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <p className="font-display font-black text-[15vw] text-white/[0.02] whitespace-nowrap select-none">
+        <p className="font-display font-black text-[15vw] whitespace-nowrap select-none"
+          style={{ color: 'var(--text-faint)' }}>
           CONTACT
         </p>
       </div>
 
-      <div className="absolute inset-0 grid-bg opacity-30" />
-
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+
         {/* Section header */}
         <div className="flex items-center gap-4 mb-20">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={inView ? { width: '3rem' } : {}}
+          <motion.div initial={{ width: 0 }} animate={inView ? { width: '3rem' } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-px bg-gold"
-          />
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
+            className="h-px" style={{ backgroundColor: 'var(--gold)' }} />
+          <motion.span initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.4 }}
-            className="font-mono text-gold text-xs tracking-[0.4em] uppercase"
-          >
+            className="font-mono text-xs tracking-[0.4em] uppercase" style={{ color: 'var(--gold)' }}>
             05. Contact
           </motion.span>
         </div>
 
         <div className="max-w-3xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+
+          {/* Heading */}
+          <motion.h2 initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-black text-5xl lg:text-7xl text-white leading-tight mb-8"
-          >
+            className="font-display font-black text-5xl lg:text-7xl leading-tight mb-8"
+            style={{ color: 'var(--text-primary)' }}>
             Travaillons
             <br />
             <span className="text-gold-gradient">ensemble</span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+          {/* Subtitle */}
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="font-body text-white/50 text-xl leading-relaxed mb-12"
-          >
+            className="font-body text-xl leading-relaxed mb-12"
+            style={{ color: 'var(--text-secondary)' }}>
             Vous avez un projet en tête ? Je suis disponible pour de nouvelles opportunités.
             N'hésitez pas à me contacter — je réponds rapidement.
           </motion.p>
 
           {/* Contact cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="grid sm:grid-cols-2 gap-4 mb-12"
-          >
+            className="grid sm:grid-cols-2 gap-4 mb-12">
             {[
-              {
-                icon: '✉',
-                label: 'Email',
-                value: 'razafindramonjytahina@gmail.com',
-                href: 'mailto:razafindramonjytahina@gmail.com',
-              },
-              {
-                icon: '📱',
-                label: 'Téléphone',
-                value: '+261 34 977 4084',
-                href: 'tel:+261349774084',
-              },
-              {
-                icon: '🌐',
-                label: 'Portfolio',
-                value: 'razafindramonjy.vercel.app',
-                href: 'https://razafindramonjy.vercel.app',
-              },
-              {
-                icon: '📍',
-                label: 'Localisation',
-                value: 'Antananarivo, Madagascar',
-                href: '#',
-              },
+              { icon: '✉', label: 'Email',        value: 'razafindramonjytahina@gmail.com', href: 'mailto:razafindramonjytahina@gmail.com' },
+              { icon: '📱', label: 'Téléphone',   value: '+261 34 977 4084',                href: 'tel:+261349774084' },
+              { icon: '🌐', label: 'Portfolio',   value: 'razafindramonjy.vercel.app',      href: 'https://razafindramonjy.vercel.app' },
+              { icon: '📍', label: 'Localisation',value: 'Antananarivo, Madagascar',        href: '#' },
             ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="group p-5 border border-white/10 hover:border-gold/40 bg-navy/30 transition-all duration-300 hover:bg-gold/5"
-              >
+              <a key={item.label} href={item.href}
+                className="group p-5 transition-all duration-300 block"
+                style={{ border: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-card)' }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement
+                  el.style.borderColor = 'var(--gold-border)'
+                  el.style.backgroundColor = 'var(--gold-faint)'
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement
+                  el.style.borderColor = 'var(--border-subtle)'
+                  el.style.backgroundColor = 'var(--bg-card)'
+                }}>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">{item.icon}</span>
                   <div>
-                    <p className="font-mono text-white/30 text-xs tracking-widest mb-1">{item.label}</p>
-                    <p className="font-body text-white/70 group-hover:text-gold transition-colors duration-300 text-sm">
+                    <p className="font-mono text-xs tracking-widest mb-1"
+                      style={{ color: 'var(--text-muted)' }}>
+                      {item.label}
+                    </p>
+                    <p className="font-body text-sm transition-colors duration-300"
+                      style={{ color: 'var(--text-primary)' }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = 'var(--gold)'}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)'}>
                       {item.value}
                     </p>
                   </div>
@@ -110,33 +96,28 @@ export default function Contact() {
             ))}
           </motion.div>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.9 }}
-            className="flex flex-wrap gap-4"
-          >
-            <a
-              href="mailto:razafindramonjytahina@gmail.com"
-              className="group relative px-10 py-5 bg-gold text-navy-deep font-mono font-medium tracking-wider overflow-hidden hover:shadow-[0_0_40px_rgba(173,145,45,0.5)] transition-all duration-300 text-sm"
-            >
+          {/* CTAs */}
+          <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.9 }} className="flex flex-wrap gap-4">
+
+            <a href="mailto:razafindramonjytahina@gmail.com"
+              className="group relative px-10 py-5 font-mono font-medium tracking-wider overflow-hidden text-sm transition-all duration-300 hover:shadow-[0_0_40px_rgba(173,145,45,0.4)]"
+              style={{ backgroundColor: 'var(--gold)', color: 'var(--bg-primary)' }}>
               <span className="relative z-10 flex items-center gap-2">
                 Envoyer un message
                 <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
               </span>
-              <div className="absolute inset-0 bg-gold-light scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
             </a>
 
-            <a
-              href="https://razafindramonjy.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-10 py-5 border border-gold/30 text-gold font-mono text-sm tracking-wider hover:bg-gold/10 transition-all duration-300 flex items-center gap-2"
-            >
+            <a href="https://razafindramonjy.vercel.app" target="_blank" rel="noopener noreferrer"
+              className="px-10 py-5 font-mono text-sm tracking-wider transition-all duration-300 flex items-center gap-2"
+              style={{ border: '1px solid var(--gold-border)', color: 'var(--gold)' }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--gold-faint)'}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'}>
               <span>Mon portfolio live</span>
               <span>↗</span>
             </a>
+
           </motion.div>
         </div>
       </div>
