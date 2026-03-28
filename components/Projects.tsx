@@ -6,23 +6,27 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 const projects = [
   {
     id: 1, number: '01', title: 'Consultant Technique SAP', company: 'Augusta Reeves Group',
-    description: 'Développement d\'une application ERP/CRM complète en ABAP sur la plateforme SAP. Gestion des workflows métiers, interfaces utilisateur SAP, et intégration des processus d\'entreprise.',
-    tags: ['SAP', 'ABAP', 'FIORI', 'ODaat', 'CDS View', 'Integration Suite'], year: '2025 - Present',
+    description: "Développement d'une application ERP/CRM complète en ABAP sur la plateforme SAP. Gestion des workflows métiers, interfaces utilisateur SAP, et intégration des processus d'entreprise.",
+    tags: ['SAP', 'ABAP', 'FIORI', 'OData', 'CDS View', 'Integration Suite'], year: '2025 - Present',
+    href: 'https://www.augustareeves.fr/',
   },
   {
     id: 2, number: '02', title: 'Data Warehouse', company: 'Kontiki Services',
-    description: 'Création du site web officiel complet + mise en place d\'un datawarehouse pour le département data analyst. Architecture full-stack avec Django en backend et React en frontend.',
+    description: "Création du site web officiel complet + mise en place d'un datawarehouse pour le département data analyst. Architecture full-stack avec Django en backend et React en frontend.",
     tags: ['React', 'Django', 'PostgreSQL', 'API Rest', 'ETL', 'OLAP'], year: '2024-2025',
+    href: 'https://kontikiservice.com/',
   },
   {
-    id: 3, number: '03', title: 'Système de Suivi de Projets', company: 'Ministère de l\'Intérieur',
-    description: 'Outil de suivi et reporting des projets numériques du ministère. Dashboard de visualisation de l\'avancement, coordination inter-équipes et génération de rapports automatisés.',
+    id: 3, number: '03', title: 'Système de Suivi de Projets', company: "Ministère de l'Intérieur",
+    description: "Outil de suivi et reporting des projets numériques du ministère. Dashboard de visualisation de l'avancement, coordination inter-équipes et génération de rapports automatisés.",
     tags: ['Agile', 'SCRUM', 'Laravel'], year: '2024',
+    href: '#',
   },
   {
     id: 4, number: '04', title: 'Site Vitrine SmartPredict', company: 'SmartPredict',
-    description: 'Développement d\'un site vitrine moderne avec animations et interface responsive. Première réalisation professionnelle mêlant design et développement web contemporain.',
+    description: "Développement d'un site vitrine moderne avec animations et interface responsive. Première réalisation professionnelle mêlant design et développement web contemporain.",
     tags: ['HTML', 'CSS', 'JavaScript', 'Responsive'], year: '2023',
+    href: 'https://smartpredict.ai',
   },
 ]
 
@@ -56,15 +60,22 @@ export default function Projects() {
 
         <div className="space-y-2">
           {projects.map((project, i) => (
-            <motion.div key={project.id}
+            <motion.a
+              key={project.id}
+              href={project.href === '#' ? undefined : project.href}
+              target={project.href !== '#' ? '_blank' : undefined}
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
-              className="group relative overflow-hidden cursor-default transition-all duration-300"
-              style={{ border: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-card)' }}
-              onMouseEnterCapture={e => (e.currentTarget as HTMLElement).style.borderColor = 'var(--gold-border)'}
-              onMouseLeaveCapture={e => (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-subtle)'}>
+              className="group relative overflow-hidden block transition-all duration-300"
+              style={{
+                border: `1px solid ${hoveredId === project.id ? 'var(--gold-border)' : 'var(--border-subtle)'}`,
+                backgroundColor: 'var(--bg-card)',
+                cursor: project.href === '#' ? 'default' : 'pointer',
+              }}>
+
               <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: hoveredId === project.id ? 1 : 0 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0 origin-left" style={{ backgroundColor: 'var(--gold-faint)' }} />
@@ -77,10 +88,11 @@ export default function Projects() {
                   </span>
                   <div className="w-px h-12 hidden lg:block" style={{ backgroundColor: 'var(--border-subtle)' }} />
                 </div>
+
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="font-mono text-xs" style={{ color: 'var(--text-muted)' }}>{project.year}</span>
-                    <span className="w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--text-muted)' }} />
+                    <span className="font-mono text-xs" style={{ color: '#94a3b8' }}>{project.year}</span>
+                    <span className="w-1 h-1 rounded-full" style={{ backgroundColor: '#94a3b8' }} />
                     <span className="font-mono text-xs" style={{ color: 'var(--gold)', opacity: 0.6 }}>{project.company}</span>
                   </div>
                   <h3 className="font-display font-bold text-xl lg:text-2xl mb-3 transition-colors duration-300"
@@ -106,11 +118,14 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
+
                 <motion.div animate={{ x: hoveredId === project.id ? 4 : 0 }} transition={{ duration: 0.3 }}
                   className="flex items-center text-2xl font-light transition-colors duration-300"
-                  style={{ color: hoveredId === project.id ? 'var(--gold)' : 'var(--text-muted)' }}>→</motion.div>
+                  style={{ color: hoveredId === project.id ? 'var(--gold)' : 'var(--text-muted)' }}>
+                  {project.href === '#' ? '→' : '↗'}
+                </motion.div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

@@ -9,10 +9,11 @@
   --bg-card:       rgba(20, 41, 71, 0.4);
   --bg-overlay:    rgba(13, 31, 53, 0.9);
 
-  --text-primary:  #ffffff;
-  --text-secondary:rgba(255,255,255,0.55);
-  --text-muted:    rgba(255,255,255,0.25);
-  --text-faint:    rgba(255,255,255,0.08);
+  /* ↑ opacités relevées pour meilleure lisibilité dark */
+  --text-primary:   #f1f5f9;
+  --text-secondary: rgba(241, 245, 249, 0.75);
+  --text-muted:     rgba(241, 245, 249, 0.45);
+  --text-faint:     rgba(241, 245, 249, 0.08);
 
   --border-subtle: rgba(255,255,255,0.08);
   --border-medium: rgba(255,255,255,0.15);
@@ -39,10 +40,10 @@ html.light {
   --bg-card:       rgba(255,255,255,0.70);
   --bg-overlay:    rgba(250,248,242,0.92);
 
-  --text-primary:  #1a1208;
-  --text-secondary:rgba(26,18,8,0.60);
-  --text-muted:    rgba(26,18,8,0.35);
-  --text-faint:    rgba(26,18,8,0.06);
+  --text-primary:   #1a1208;
+  --text-secondary: rgba(26,18,8,0.65);
+  --text-muted:     rgba(26,18,8,0.40);
+  --text-faint:     rgba(26,18,8,0.06);
 
   --border-subtle: rgba(173,145,45,0.12);
   --border-medium: rgba(173,145,45,0.25);

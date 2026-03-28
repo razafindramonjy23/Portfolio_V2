@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
 import tahina from '../assets/tahina2.png'
 
 const roles = ['Full Stack Developer', 'React / Next.js', 'Django / Python', 'SAP ABAP / Fiori']
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex]   = useState(0)
+  const [roleIndex, setRoleIndex]     = useState(0)
   const [displayText, setDisplayText] = useState('')
   const [isDeleting, setIsDeleting]   = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -40,7 +41,7 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         <motion.div animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-40 -right-40 w-96 h-96 rounded-full"
+          className="absolute -top-40 -right-20 sm:-right-40 w-64 sm:w-96 h-64 sm:h-96 rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(173,145,45,0.12) 0%, transparent 70%)' }} />
         <motion.div animate={{ y: ['-100%', '100vh'] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'linear', repeatDelay: 3 }}
@@ -61,20 +62,23 @@ export default function Hero() {
       ))}
 
       <motion.div style={{ y, opacity }}
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pt-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center min-h-[85vh]">
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full pt-20 sm:pt-24">
 
-          {/* ══════════════ LEFT ══════════════ */}
-          <div>
-            {/* availability badge */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center min-h-[85vh] py-8 lg:py-0">
+
+          {/* ══ LEFT ══ */}
+          <div className="flex flex-col justify-center">
+
+            {/* Badge */}
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-3 mb-8">
-              <div className="w-8 h-px" style={{ backgroundColor: 'var(--gold)' }} />
-              <span className="font-mono text-xs tracking-[0.3em] uppercase" style={{ color: 'var(--gold)' }}>
+              className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+              <div className="w-6 sm:w-8 h-px flex-shrink-0" style={{ backgroundColor: 'var(--gold)' }} />
+              <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase"
+                style={{ color: 'var(--gold)' }}>
                 Disponible · Antananarivo
               </span>
-              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
             </motion.div>
 
             {/* TAHINA */}
@@ -82,35 +86,35 @@ export default function Hero() {
               <motion.h1 initial={{ y: '100%' }} animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
                 className="font-display font-black leading-[0.88]"
-                style={{ fontSize: 'clamp(2.8rem, 7.5vw, 6rem)', color: 'var(--text-primary)' }}>
+                style={{ fontSize: 'clamp(2.4rem, 10vw, 6rem)', color: 'var(--text-primary)' }}>
                 TAHINA
               </motion.h1>
             </div>
 
             {/* RAZAFINDRAMONJY */}
-            <div className="overflow-hidden mb-6">
+            <div className="overflow-hidden mb-5 sm:mb-6">
               <motion.h1 initial={{ y: '100%' }} animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
                 className="font-display font-black leading-[0.88] text-gold-gradient"
-                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.8rem)' }}>
+                style={{ fontSize: 'clamp(1.1rem, 4.2vw, 2.8rem)' }}>
                 RAZAFINDRAMONJY
               </motion.h1>
             </div>
 
-            {/* typewriter */}
+            {/* Typewriter */}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-              className="flex items-center gap-2 mb-8">
-              <span className="font-mono text-xl" style={{ color: 'var(--text-muted)' }}>_</span>
-              <span className="font-mono text-lg lg:text-xl" style={{ color: 'var(--gold)', opacity: 0.85 }}>
+              className="flex items-center gap-2 mb-6 sm:mb-8">
+              <span className="font-mono text-base sm:text-xl" style={{ color: 'var(--text-muted)' }}>_</span>
+              <span className="font-mono text-sm sm:text-lg lg:text-xl" style={{ color: 'var(--gold)', opacity: 0.85 }}>
                 {displayText}
               </span>
-              <span className="font-mono text-xl cursor-blink" style={{ color: 'var(--gold)' }}>|</span>
+              <span className="font-mono text-base sm:text-xl cursor-blink" style={{ color: 'var(--gold)' }}>|</span>
             </motion.div>
 
-            {/* description */}
+            {/* Description */}
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="font-body text-lg leading-relaxed max-w-lg mb-10"
+              className="font-body text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg mb-8 sm:mb-10"
               style={{ color: 'var(--text-secondary)' }}>
               Développeur FullStack junior, autonome et créatif. Je transforme les idées en{' '}
               <span style={{ color: 'var(--gold)' }}>solutions concrètes</span> avec précision et passion.
@@ -119,17 +123,15 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
-              className="flex flex-wrap items-center gap-4">
+              className="flex flex-wrap items-center gap-3">
               <a href="#projects"
-                className="group relative px-8 py-4 font-mono font-medium text-sm tracking-wider overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(173,145,45,0.4)]"
+                className="group px-5 sm:px-8 py-3 sm:py-4 font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-300 hover:shadow-[0_0_30px_rgba(173,145,45,0.4)] flex items-center gap-2"
                 style={{ backgroundColor: 'var(--gold)', color: 'var(--bg-primary)' }}>
-                <span className="relative z-10 flex items-center gap-2">
-                  Voir mes projets
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </span>
+                Voir mes projets
+                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
               </a>
               <a href="mailto:razafindramonjytahina@gmail.com"
-                className="px-8 py-4 font-mono text-sm tracking-wider transition-all duration-300"
+                className="px-5 sm:px-8 py-3 sm:py-4 font-mono text-xs sm:text-sm tracking-wider transition-all duration-300"
                 style={{ border: '1px solid var(--border-medium)', color: 'var(--text-secondary)' }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
@@ -143,91 +145,95 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* stats */}
+            {/* Stats */}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-              className="flex items-center gap-8 mt-12 pt-8"
+              className="flex items-center gap-6 sm:gap-8 mt-8 sm:mt-12 pt-6 sm:pt-8"
               style={{ borderTop: '1px solid var(--border-subtle)' }}>
               {[
-                { num: '2+', label: 'Expériences' },
-                { num: '3',  label: 'Langues' },
+                { num: '2+',  label: 'Expériences' },
+                { num: '2',   label: 'Langues' },
                 { num: '15+', label: 'Technologies' },
               ].map(s => (
                 <div key={s.label}>
-                  <p className="font-display font-black text-2xl" style={{ color: 'var(--gold)' }}>{s.num}</p>
-                  <p className="font-mono text-xs tracking-widest" style={{ color: 'var(--text-muted)' }}>{s.label}</p>
+                  <p className="font-display font-black text-xl sm:text-2xl" style={{ color: 'var(--gold)' }}>{s.num}</p>
+                  <p className="font-mono text-[10px] sm:text-xs tracking-widest" style={{ color: 'var(--text-muted)' }}>{s.label}</p>
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* ══════════════ RIGHT — PHOTO ══════════════ */}
-          <div className="hidden lg:flex items-center justify-center relative">
+          {/* ══ RIGHT — Photo ══ */}
+          <div className="flex items-center justify-center relative lg:min-h-[520px]">
             <motion.div initial={{ opacity: 0, scale: 0.85, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="relative">
 
-              {/* rotating rings */}
+              {/* Rotating rings — desktop only */}
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-                className="absolute rounded-full"
+                className="absolute hidden lg:block rounded-full"
                 style={{ inset: -28, border: '1px solid var(--gold)', opacity: 0.2 }} />
               <motion.div animate={{ rotate: -360 }} transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-                className="absolute rounded-full"
+                className="absolute hidden lg:block rounded-full"
                 style={{ inset: -52, border: '1px dashed var(--gold)', opacity: 0.1 }} />
 
-              {/* gold accent blocks */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 z-0"
+              {/* Gold accent blocks */}
+              <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-14 sm:w-20 h-14 sm:h-20 z-0"
                 style={{ backgroundColor: 'var(--gold)', opacity: 0.15 }} />
-              <div className="absolute -top-4 -left-4 w-14 h-14 z-0"
+              <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 sm:w-14 h-10 sm:h-14 z-0"
                 style={{ border: '2px solid var(--gold)', opacity: 0.3 }} />
 
-              {/* ── photo frame ── */}
+              {/* ── Photo frame ── */}
               <div className="relative z-10 overflow-hidden"
                 style={{
-                  width: 288, height: 360,
+                  width: 'clamp(180px, 45vw, 288px)',
+                  height: 'clamp(220px, 55vw, 360px)',
                   border: '2px solid var(--gold-border)',
                   backgroundColor: 'var(--bg-secondary)',
                 }}>
 
-                {/* photo — transparent background shows theme color */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={tahina.src}
+                {/* Next.js optimized Image */}
+                <Image
+                  src={tahina}
                   alt="Tahina Razafindramonjy"
-                  className="w-full h-full object-cover object-top"
-                  style={{ display: 'block' }}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 45vw, 288px"
+                  className="object-cover object-top"
                 />
 
-                {/* bottom gradient fade */}
-                <div className="absolute inset-0 pointer-events-none"
+                {/* Bottom gradient fade */}
+                <div className="absolute inset-0 pointer-events-none z-10"
                   style={{ background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 45%)' }} />
 
-                {/* name chip */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                  <p className="font-display font-bold text-sm" style={{ color: 'var(--text-primary)' }}>
+                {/* Name chip */}
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20">
+                  <p className="font-display font-bold text-xs sm:text-sm" style={{ color: 'var(--text-primary)' }}>
                     Tahina Razafindramonjy
                   </p>
-                  <p className="font-mono text-xs" style={{ color: 'var(--gold)' }}>Full Stack Developer</p>
+                  <p className="font-mono text-[10px] sm:text-xs" style={{ color: 'var(--gold)' }}>
+                    Full Stack Developer
+                  </p>
                 </div>
               </div>
 
-              {/* floating "DISPONIBLE" badge */}
+              {/* Floating badge */}
               <motion.div animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-4 -left-8 z-20 px-4 py-2"
+                className="absolute -bottom-3 sm:-bottom-4 -left-5 sm:-left-8 z-20 px-3 sm:px-4 py-1.5 sm:py-2"
                 style={{ backgroundColor: 'var(--gold)', color: 'var(--bg-primary)' }}>
-                <p className="font-mono text-xs font-bold tracking-widest">DISPONIBLE</p>
+                <p className="font-mono text-[9px] sm:text-xs font-bold tracking-widest">DISPONIBLE</p>
               </motion.div>
             </motion.div>
           </div>
 
         </div>
 
-        {/* scroll indicator */}
+        {/* Scroll indicator */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2">
           <span className="font-mono text-xs tracking-widest" style={{ color: 'var(--text-muted)' }}>SCROLL</span>
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-px h-12"
+            className="w-px h-10"
             style={{ background: 'linear-gradient(to bottom, var(--gold), transparent)', opacity: 0.5 }} />
         </motion.div>
       </motion.div>

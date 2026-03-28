@@ -5,12 +5,12 @@ import { motion, useInView } from 'framer-motion'
 
 const experiences = [
   {
-    company: 'Augusta Reeves Suisse',
+    company: 'Augusta Reeves Group',
     role: 'Développeur ABAP',
-    period: '2025',
-    location: 'Suisse (Remote)',
+    period: '2025 - Present',
+    location: 'Antananarivo, Madagascar',
     description: 'Développement d\'applications ERP/CRM sur la plateforme SAP avec le langage ABAP. Création de modules métiers sur mesure pour les processus d\'entreprise.',
-    tags: ['SAP', 'ABAP', 'ERP', 'CRM'],
+    tags: ['SAP', 'ABAP', 'Fiori', 'OData', 'CDS View', 'Integration Suite'],
     highlight: true,
   },
   {
